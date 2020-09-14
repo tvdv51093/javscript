@@ -6,19 +6,18 @@
 var w = 1280;
 var h = 720;
 
- var ball_count = 4;
+ var ball_count = 100;
  var ballen = [];
  class ball {
-     ball(){
-        this.s = 0.5;
-        this.x = 100;
-        this.y = 100;
-        this.xs = 0.5;
-        this.ys = 0.1;
-        this.r = 30;
-        this.rc = 255;
-        this.gc = 0;
-        this.bc = 100;
+     constructor(){
+        this.x = w * Math.random();
+        this.y = h * Math.random();
+        this.xs = Math.random() * 2 - 1;
+        this.ys = Math.random() * 2 - 1;
+        this.r = Math.random() * 40 + 40;
+        this.rcol = Math.random() * 200 + 55;
+        this.gcol = Math.random() * 200 + 55;
+        this.bcol = Math.random() * 200 + 55;
      }
 
      update(){
@@ -33,8 +32,8 @@ var h = 720;
      }
 
      teken(){
-         fill(this.rc, this.gc, this.bc);
-        ellipse(this.x, this.y ,this.r, this.r);
+         fill(this.rcol, this.gcol, this.bcol);
+         ellipse(this.x, this.y ,this.r, this.r);
      
      }
  }
@@ -62,7 +61,6 @@ function draw() {
     clear();
     background(50);
     
-
    for(var i = 0; i < ballen.length; i++){ 
        ballen[i].update(); 
        ballen[i].teken(); 
